@@ -1,23 +1,25 @@
-let root = __dirname
+const root = __dirname
 
-let babelConfig = {
+const path = require('path')
+
+const babelConfig = {
   babelrc: true,
-  cacheDirectory: root + "/tmp/cache",
+  cacheDirectory: root + '/tmp/cache',
   presets:[ 'react' ]
 }
 
 module.exports = {
-  entry: "entry.js",
+  entry: { app: ['./app/entry.js']},
   output: {
-    path: root + "/public/javascripts",
+    path: path.resolve(root, 'build'),
     pathinfo: true,
-    filename: "bundle.js",
+    filename: 'bundle.js',
     module: {
       loaders: [
         {
           test: /\.(js|jsx)$/,
           exclude:/(node_modules)/,
-          loader: "babel-loader",
+          loader: 'babel-loader',
           query: {}
         }
       ]
