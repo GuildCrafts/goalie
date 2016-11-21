@@ -7,7 +7,7 @@
     "npm": "3.10.x"
   },
   "scripts": {
-    "start": "bin/server",
+    "start": "nf start",
     "lint": "eslint --color *.js; exit 0;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,7 +23,8 @@
   "homepage": "https://github.com/GuildCrafts/goalie#readme",
   "devDependencies": {
     "cz-conventional-changelog": "^1.2.0",
-    "eslint": "^3.10.2"
+    "eslint": "^3.10.2",
+    "foreman": "^2.0.0"
   },
   "config": {
     "commitizen": {
