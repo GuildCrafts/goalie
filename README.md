@@ -4,7 +4,10 @@
 
 Goalie uses GitHub issues as its canonical data store, wrapping the issue data and providing a more useful/relevant interface to the LOS goals.
 
+The live app is available here: https://lg-goalie.herokuapp.com/
+
 [![CircleCI](https://circleci.com/gh/GuildCrafts/goalie.svg?style=svg&circle-token=8720e3371dc1f20036897f45eb3a918fbcad640f)](https://circleci.com/gh/GuildCrafts/goalie)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=lg-goalie)](https://lg-goalie.herokuapp.com/)
 
 ## Getting Started
 
