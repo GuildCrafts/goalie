@@ -59,7 +59,9 @@
     "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^1.16.2",
     "webpack-error-notification": "^0.1.6",
-    "webpack-hot-middleware": "^2.13.2"
+    "webpack-hot-middleware": "^2.13.2",
+    "commitizen": "^2.8.6",
+    "foreman": "^2.0.0"
   },
   "config": {
     "commitizen": {
