@@ -1,24 +1,37 @@
+const rootDir = __dirname
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-const webpack = require('webpack')
 
+const HtmlWebpackPluginConifg = new HtmlWebpackPlugin({
+  template: rootDir + '/browser/index.html',
+  filename: 'index.html',
+  inject: 'body',
+  minify: {
+    removeComments: true,
+    collapseWhiteSpace: true,
+    removeRedundantAttributes: true,
+    useShortDoctype: true,
+    removeEmptyAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    keepClosingSlash: true,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true
+  }
+})
 
 module.exports = {
-  entry: path.resolve(__dirname, 'app/entry.js'),
+  entry: './browser/Render.js',
   output: {
-    path: path.join(__dirname, 'build/public'),
-    pathinfo: true,
-    filename: 'bundle.js',
+    path: `${rootDir}/dist`,
+    filename: 'bundle.js'
+  },
     module: {
       loaders: [
         {
-          test: /\.(js|jsx)?$/,
-          exclude:/(node_modules)/,
-          loader: ['babel'],
-          query: {
-            presets: ['es2015', 'react'],
-          }
-        }
-      ]
-    }
-  }
+          test:  /\.js$/, include: `${rootDir}/browser`, loader: 'babel-loader',
+      }
+    ]
+  },
+  plugins: [HtmlWebpackPluginConifg]
 }
