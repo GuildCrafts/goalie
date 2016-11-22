@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nf start",
-    "webpack": "webpack-dev-server",
+    "webpack": "webpack-dev-server --inline --hot --content-base http://localhost:5000/",
     "babel-node": "babel-node --presets=es2015",
     "lint": "eslint --color *.js; exit 0;",
     "test": "echo \"Error: no test specified\" && exit 1"

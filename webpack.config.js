@@ -1,6 +1,5 @@
 const rootDir = __dirname
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
 
 const HtmlWebpackPluginConifg = new HtmlWebpackPlugin({
   template: rootDir + '/browser/index.html',
@@ -26,10 +25,10 @@ module.exports = {
     path: `${rootDir}/dist`,
     filename: 'bundle.js'
   },
-    module: {
-      loaders: [
-        {
-          test:  /\.js$/, include: `${rootDir}/browser`, loader: 'babel-loader',
+  module: {
+    loaders: [
+      {
+        test:  /\.js$/, include: `${rootDir}/browser`, loader: 'babel-loader',
       }
     ]
   },
