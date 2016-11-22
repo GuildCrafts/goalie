@@ -15,6 +15,9 @@ const config = require('./webpack.config.js')
 const { passport } = require('./config/authenticate')
 const routes = require('./routes')
 const auth = require('./routes/auth.js')
+const { passport } = require( './config/authenticate' )
+const routes = require( './routes' )
+const auth = require( './routes/auth.js' )
 
 const app = express()
 
@@ -53,21 +56,21 @@ app.use(methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // passport
-app.use(session({
+app.use( session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }))
-app.use(passport.initialize())
-app.use(passport.session())
+app.use( passport.initialize() )
+app.use( passport.session() )
 
 // routes setup
 app.use('/', routes)
 app.use('/auth', auth)
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
-  const err = new Error('Not Found')
+app.use( ( req, res, next ) => {
+  const err = new Error( 'Not Found' )
   err.status = 404
   next(err)
 })
@@ -75,10 +78,10 @@ app.use((req, res, next) => {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use((err, req, res) => {
-    res.status(err.status || 500)
-    res.render('error', {
+if ( app.get( 'env' ) === 'development' ) {
+  app.use( ( err, req, res ) => {
+    res.status( err.status || 500 )
+    res.render( 'error', {
       message: err.message,
       error: err
     })
@@ -87,9 +90,9 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, req, res) => {
-  res.status(err.status || 500)
-  res.render('error', {
+app.use( ( err, req, res ) => {
+  res.status( err.status || 500 )
+  res.render( 'error', {
     message: err.message,
     error: {}
   })
