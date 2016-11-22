@@ -7,7 +7,6 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const partials = require('express-partials')
-const util = require('util')
 
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
@@ -55,18 +54,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // passport
 app.use(session({
-  secret: 'OMG I LOVE SECRETS',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-
-
-app.get('/', function(req, res){
-  res.render('index', { user: req.user })
-})
-
 
 // routes setup
 app.use('/', routes)
