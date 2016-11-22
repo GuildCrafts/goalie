@@ -20,9 +20,14 @@ const HtmlWebpackPluginConifg = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-  entry: './browser/Render.js',
+  entry: [
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
+    './browser/Render.js'
+  ]
   output: {
-    path: `${rootDir}/dist`,
+    path: '/',
+    publicPath: 'http://localhost:3000'
     filename: 'bundle.js'
   },
   module: {
@@ -32,5 +37,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [HtmlWebpackPluginConifg]
+  target: 'web'
 }

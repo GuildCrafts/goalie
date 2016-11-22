@@ -1,8 +1,9 @@
 {
   "presets": [
     "es2015",
-    "es2016",
-    "react"
+    "react",
+    "airbnb",
+    "stage-2"
   ],
   "plugins": [
     "transform-class-properties",
