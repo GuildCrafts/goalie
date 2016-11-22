@@ -1,1 +1,1 @@
-document.write("oh hai! it works!")
+document.write('Hello!')
