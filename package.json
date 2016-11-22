@@ -24,7 +24,6 @@
   "devDependencies": {
     "cz-conventional-changelog": "^1.2.0",
     "eslint": "^3.10.2",
-    "commitizen": "^2.8.6",
     "foreman": "^2.0.0"
   },
   "config": {
@@ -44,7 +43,6 @@
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
-    "pug": "^2.0.0-beta6",
     "serve-favicon": "^2.3.2"
   }
 }
