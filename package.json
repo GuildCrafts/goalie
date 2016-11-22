@@ -36,7 +36,10 @@
     "cookie-parser": "^1.4.3",
     "debug": "^2.3.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-github2": "^0.1.10",
     "pug": "^2.0.0-beta6",
     "serve-favicon": "^2.3.2"
   }

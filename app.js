@@ -4,6 +4,8 @@ const logger = require('morgan')
 const favicon = require('serve-favicon')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const session = require('express-session')
+const passport = require('passport')
 
 const routes = require('./routes')
 
@@ -19,6 +21,15 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
+// passport
+app.use(session({ 
+  secret: 'OMG I LOVE SECRETS',
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 
 // routes setup
 app.use('/', routes)
