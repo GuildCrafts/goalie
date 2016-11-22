@@ -9,7 +9,7 @@
   "scripts": {
     "start": "nf start",
     "lint": "eslint --color *.js; exit 0;",
-    "test": "mocha -w test/setup.js 'test/App-test.js'"
+    "test": "mocha --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,8 @@
     "chai-enzyme": "^0.6.1",
     "commitizen": "^2.8.6",
     "css-loader": "^0.26.0",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
     "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^2.6.0",
     "eslint": "^3.10.2",
@@ -60,7 +62,9 @@
     "webpack-dev-server": "^1.16.2",
     "webpack-error-notification": "^0.1.6",
     "webpack-hot-middleware": "^2.13.2",
-    "commitizen": "^2.8.6"
+    "commitizen": "^2.8.6",
+    "foreman": "^2.0.0",
+    "mocha": "^2.4.5"
   },
   "config": {
     "commitizen": {
