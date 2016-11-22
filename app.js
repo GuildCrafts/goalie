@@ -8,9 +8,9 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const partials = require('express-partials')
 
-const { passport } = require( './config/authenticate' )
-const routes = require( './routes' )
-const auth = require( './routes/auth.js' )
+const { passport } = require('./config/authenticate')
+const routes = require('./routes')
+const auth = require('./routes/auth.js')
 
 const app = express()
 
@@ -27,13 +27,13 @@ app.use(methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // passport
-app.use( session({
-  secret: 'OMG I LOVE SECRETS',
+app.use(session({
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }))
-app.use( passport.initialize() )
-app.use( passport.session() )
+app.use(passport.initialize())
+app.use(passport.session())
 
 // routes setup
 app.use('/', routes)
