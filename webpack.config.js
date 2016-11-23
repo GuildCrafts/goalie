@@ -1,41 +1,46 @@
-const rootDir = __dirname
+const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const HtmlWebpackPluginConifg = new HtmlWebpackPlugin({
-  template: rootDir + '/browser/index.html',
-  filename: 'index.html',
-  inject: 'body',
-  minify: {
-    removeComments: true,
-    collapseWhiteSpace: true,
-    removeRedundantAttributes: true,
-    useShortDoctype: true,
-    removeEmptyAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    keepClosingSlash: true,
-    minifyJS: true,
-    minifyCSS: true,
-    minifyURLs: true
-  }
-})
-
 module.exports = {
+  devtool: 'eval-source-map',
   entry: [
     'webpack/hot/dev-server',
-    'webpack-hot-middleware/client',
-    './browser/Render.js'
-  ]
+    'webpack-hot-middleware/client?reload=true',
+    path.join(__dirname, 'client/app.js')
+  ],
   output: {
-    path: '/',
-    publicPath: 'http://localhost:3000'
+    path: path.join(__dirname, '/dist/'),
+    publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'client/index.html',
+      inject: 'body',
+      filename: 'index.html'
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    })
+  ],
   module: {
-    loaders: [
-      {
-        test:  /\.js$/, include: `${rootDir}/browser`, loader: 'babel-loader',
+    loaders: [{
+      test: /\.(js|jsx)?$/,
+      exclude: /node_modules/,
+      loader: 'babel',
+      query: {
+        "presets": ["react", "es2015"]
       }
-    ]
-  },
-  target: 'web'
+    }, {
+      test: /\.json?$/,
+      loader: 'json'
+    }, {
+      test: /\.css$/,
+      loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+    }]
+  }
 }
