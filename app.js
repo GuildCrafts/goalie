@@ -8,7 +8,7 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const partials = require('express-partials')
 
-const {passport} = require('./config/authenticate')
+const { passport } = require('./config/authenticate')
 const routes = require('./routes')
 const auth = require('./routes/auth.js')
 

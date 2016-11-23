@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 const chai = require('chai')
 const chaiHTTP = require('chai-http')
 
@@ -33,6 +33,6 @@ describe('Auth: ', () => {
           response.should.have.status(200)
           done()
       })
-    });
+    })
   })
 })
