@@ -1,6 +1,8 @@
 process.env.NODE_ENV = 'test'
 
 const { shallow, mount, render } = require('enzyme')
+const React = require('react')
+const ReactDOM = require('react-dom')
 const chai = require('chai')
 const expect = chai.expect
 const jsdom = require('jsdom').jsdom
@@ -19,4 +21,5 @@ module.exports = {
   shallow,
   mount,
   render,
+  React
 }

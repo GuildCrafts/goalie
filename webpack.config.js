@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
-    'webpack/hot/dev-server',
     'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'client/app.js')
   ],
@@ -29,11 +28,11 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.(js|jsx)?$/,
+      test: /\.(js|jsx)$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        "presets": ["react", "es2015"]
+        'presets': ['react', 'es2015', 'airbnb', 'stage-0']
       }
     }, {
       test: /\.json?$/,

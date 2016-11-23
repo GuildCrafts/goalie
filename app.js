@@ -41,16 +41,12 @@ app.get('*', (req, res) => {
   res.end()
 })
 
-app.listen(3000, console.log('listening on 3000'))
-
-
 app.use(webpackMiddleware(compiler, {
   publicPath: config.output.publicPath,
   stats: {colors: true}
 }))
 
 app.use(webpackHotMiddleware(compiler, {
-  log: console.log
 }))
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
