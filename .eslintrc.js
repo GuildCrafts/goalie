@@ -30,6 +30,9 @@ module.exports = {
       "never"
     ],
     "prefer-arrow-callback": "error",
-    "func-call-spacing": [ "error", "never" ]
+    "func-call-spacing": [ "error", "never" ],
+    "space-in-parens": [ "error", "never" ],
+    "object-curly-spacing": [ "error", "always" ],
+    "keyword-spacing": [ "error" ]
   }
 };
