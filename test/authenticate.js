@@ -1,11 +1,10 @@
+require('dotenv').config();
 const chai = require('chai')
 const chaiHTTP = require('chai-http')
-const server = require('../app')
-const should = chai.should()
 
-var path = require('path');
-var dotEnvPath = path.resolve('./.env');
-require('dotenv').config({ path: dotEnvPath});
+const server = require('../app')
+
+const should = chai.should()
 
 chai.use(chaiHTTP)
 
