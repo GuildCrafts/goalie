@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
-    path.join(__dirname, 'client/app.js')
+    path.join(__dirname, 'client/app.jsx')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
@@ -40,6 +40,10 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
-    }]
+    }],
+    externals: {
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': true
+    }
   }
 }

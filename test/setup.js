@@ -1,25 +1,20 @@
-process.env.NODE_ENV = 'test'
+require('babel-register')()
 
-const { shallow, mount, render } = require('enzyme')
-const React = require('react')
-const ReactDOM = require('react-dom')
-const chai = require('chai')
-const expect = chai.expect
-const jsdom = require('jsdom').jsdom
+var jsdom = require('jsdom').jsdom
 
-beforeEach(() => {
-  global.document = jsdom('')
-  global.window = document.defaultView;
-  global.navigator = {
-    userAgent: 'node.js'
+var exposedProperties = ['window', 'navigator', 'document']
+
+global.document = jsdom('')
+global.window = document.defaultView
+Object.keys(document.defaultView).forEach((property) => {
+  if (typeof global[property] === 'undefined') {
+    exposedProperties.push(property)
+    global[property] = document.defaultView[property]
   }
 })
 
-module.exports = {
-  chai,
-  expect,
-  shallow,
-  mount,
-  render,
-  React
+global.navigator = {
+  userAgent: 'node.js'
 }
+
+documentRef = document
