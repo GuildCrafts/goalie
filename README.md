@@ -38,6 +38,7 @@ Create a `.env` file in the root of the cloned repo that looks like this:
 GITHUB_CLIENT_ID=GET_THIS_VALUE_FROM_GITHUB
 GITHUB_CLIENT_SECRET=GET_THIS_VALUE_FROM_GITHUB
 SESSION_SECRET=MAKEUP_A_REALLY_LONG_STRING_HERE
+APP_URL=http://localhost:5000
 ```
 
 Now you should be ready to run `npm start` to start the server using `node-foreman` (defaults to http://localhost:5000)

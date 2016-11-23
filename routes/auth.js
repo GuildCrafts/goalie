@@ -11,7 +11,8 @@ router.get('/oauth_callback',
   ( req, res ) => {
     const { code } = req.query
     const { user } = req
-    res.status(200).json({user, code})
+    console.log('========',user)
+    res.status( 200 ).render( 'list', { user })
   }
 )
 
