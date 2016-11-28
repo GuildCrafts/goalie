@@ -7,7 +7,7 @@ export default class App extends Component {
     super(props)
   }
   render() {
-    return <div classname="intro">Hello, do I work?!</div>
+    return <div>HiNovember Cohort</div>
   }
 }
 
