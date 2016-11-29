@@ -32,7 +32,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        'presets': ['react', 'es2015', 'airbnb', 'stage-0']
+        'presets': ['react', 'es2015', 'stage-0']
       }
     }, {
       test: /\.json?$/,
@@ -40,10 +40,6 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
-    externals: {
-      'react/lib/ExecutionEnvironment': true,
-      'react/lib/ReactContext': true
-    }
     }]
   }
 }
