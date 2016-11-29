@@ -41,13 +41,6 @@ app.get('*', (req, res) => {
   res.end()
 })
 
-app.use(webpackMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  stats: {colors: true}
-}))
-
-app.use(webpackHotMiddleware(compiler, {
-}))
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found')
