@@ -9,7 +9,7 @@
   "scripts": {
     "start": "nf start",
     "lint": "eslint --color *.js; exit 0;",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 10000 --recursive"
   },
   "repository": {
     "type": "git",
@@ -65,7 +65,8 @@
     "webpack-hot-middleware": "^2.13.2",
     "commitizen": "^2.8.6",
     "foreman": "^2.0.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "nock": "^9.0.2"
   },
   "config": {
     "commitizen": {
