@@ -1,23 +1,19 @@
 const express = require('express')
 const router = express.Router()
-const { passport } = require('../config/authenticate')
+const {passport} = require('../config/authenticate')
+const {authCallback, logOutCallback} = require('./authenticate/authMethods')
 
-router.get('/login',
-  passport.authenticate('github', {scope:[ 'user:email' ]})
+router.get(
+  '/login',
+  passport.authenticate('github', {scope:['user:email']})
 )
 
-router.get('/oauth_callback',
-  passport.authenticate('github', { failureRedirect: '/login' }),
-  (req, res) => {
-    const { code } = req.query
-    const { user } = req
-    res.status(200).render('list', { user })
-  }
+router.get(
+  '/oauth_callback',
+  passport.authenticate('github', {failureRedirect: '/login'}),
+  authCallback
 )
 
-router.get('/logout', (req, res) => {
-  req.logout()
-  res.status(200).json( {} )
-})
+router.get('/logout', logOutCallback)
 
 module.exports = router
