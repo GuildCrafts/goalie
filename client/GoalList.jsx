@@ -3,7 +3,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Subheader from 'material-ui/Subheader'
 import {List, ListItem, makeSelectable} from 'material-ui/List'
 import goals from '../goals'
-import labels from '../goals'
 import moment from 'moment'
 
 let SelectableList = makeSelectable(List)
