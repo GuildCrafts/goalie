@@ -1,13 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin();
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import ReactDOM from 'react-dom'
+import SelectableGoalList from './GoalList.jsx'
+import GoalSelectItem from './GoalList.jsx'
+import goals from '../goals'
 
+import {List} from 'material-ui/List'
 
 export default class App extends Component {
-  constructor(props){
-    super(props)
-  }
   render() {
-    return <div>Hey Wuz Up!</div>
+    const goalNodes = goals.map( goal => <GoalSelectItem {...goal} /> )
+    return (
+      <MuiThemeProvider>
+        <List>
+          {goalNodes}
+        </List>
+      </MuiThemeProvider>
+    )
   }
 }
 
