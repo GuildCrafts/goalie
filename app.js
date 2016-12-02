@@ -15,9 +15,6 @@ const config = require('./webpack.config.js')
 const { passport } = require('./config/authenticate')
 const routes = require('./routes')
 const auth = require('./routes/auth.js')
-const { passport } = require( './config/authenticate' )
-const routes = require( './routes' )
-const auth = require( './routes/auth.js' )
 
 const app = express()
 
@@ -45,16 +42,6 @@ const middleware = webpackMiddleware(compiler, {
   }
 })
 
-app.use(middleware)
-app.use(webpackHotMiddleware(compiler))
-
-app.get('*', (req, res) => {
-  res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
-  res.end()
-})
-app.use(methodOverride())
-app.use(express.static(path.join(__dirname, 'public')))
-
 // passport
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -63,10 +50,21 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride())
 
 // routes setup
 app.use('/', routes)
 app.use('/auth', auth)
+
+
+app.use(middleware)
+app.use(webpackHotMiddleware(compiler))
+
+app.get('*', (req, res) => {
+  res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
+  res.end()
+})
+app.use(express.static(path.join(__dirname, 'public')))
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

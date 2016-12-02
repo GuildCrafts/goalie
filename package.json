@@ -44,7 +44,6 @@
     "chai-enzyme": "^0.6.1",
     "commitizen": "^2.8.6",
     "css-loader": "^0.26.0",
-    "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^2.6.0",
