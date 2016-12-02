@@ -3,11 +3,12 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Subheader from 'material-ui/Subheader'
 import {List, ListItem, makeSelectable} from 'material-ui/List'
 import goals from '../goals'
+import labels from '../goals'
 import moment from 'moment'
 
 let SelectableList = makeSelectable(List)
 
-class SelectableGoalList extends Component {
+export class SelectableGoalList extends Component {
   static PropTypes = {
     children: PropTypes.node.isRequired,
     defaultValue: PropTypes.number.isRequired,
@@ -16,7 +17,7 @@ class SelectableGoalList extends Component {
   constructor(props){
     super(props)
     this.state = {
-      selectedIndex: goals[0].id,
+      selectedIndex: goals[0],
     }
   }
 
@@ -38,32 +39,31 @@ class SelectableGoalList extends Component {
   }
 }
 
-const GoalList = () => {
-  const goalNodes = goals.map(goal =>
-    <ListItem
-      key={goal.id}
-      primaryText={goal.title}
-      secondaryText={goal.user.login}
-      value={goal.id}
-      nestedItems={[
-        <ListItem
-          primaryText={goal.number}
-          secondaryText={goal.body}
-        />,
-        <ListItem
-          primaryText={goal.labels[{name}]}
-          secondaryText={moment(goal.updated_at).format('MMM Do YYYY')}
-        />,
-      ]}
-    />
-  )
-  return (
-    <SelectableGoalList>
-      <Subheader>GOALIE</Subheader>
-      {goalNodes}
-      <Subheader>CONVERSATION</Subheader>
-    </SelectableGoalList>
-  )
-}
+export default class GoalSelectItem extends React.Component {
+  updatedAtText() {
+    const { updated_at } = this.props
 
-export default GoalList
+   return moment( updated_at ).format( 'MMM Do YYYY' )
+  }
+
+  nestedItems() {
+    const { number, body, labels } = this.props
+    return [
+      <ListItem primaryText={number} secondaryText={body} />,
+      <ListItem primaryText={labels.name} secondaryText={this.updatedAtText()} />
+    ]
+  }
+
+  render() {
+    const { id, title, user } = this.props
+
+    return (
+      <ListItem key={id}
+        primaryText={title}
+        secondaryText={user.login}
+        value={id}
+        nestedItems={this.nestedItems()}
+       />
+    )
+  }
+}
