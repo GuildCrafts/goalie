@@ -54,4 +54,4 @@ Read the guide on [CONTRIBUTING][contributing] and then grab an issue from the t
 - [tannerwelsh](https://github.com/tannerwelsh)
 - [rachel-ftw](https://github.com/rachel-ftw)
 - [pllearns](https://github.com/pllearns)
-- [Jusdev89](https://github.com/Jusdev89)
+- [jusdev89](https://github.com/Jusdev89)

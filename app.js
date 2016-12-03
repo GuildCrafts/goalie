@@ -28,6 +28,19 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+// passport
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride())
+
+app.use('/', routes)
+app.use('/auth', auth)
+
 const compiler = webpack(config)
 const middleware = webpackMiddleware(compiler, {
   publicPath: config.output.publicPath,
@@ -42,21 +55,6 @@ const middleware = webpackMiddleware(compiler, {
   }
 })
 
-// passport
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(methodOverride())
-
-// routes setup
-app.use('/', routes)
-app.use('/auth', auth)
-
-
 app.use(middleware)
 app.use(webpackHotMiddleware(compiler))
 
@@ -64,7 +62,6 @@ app.get('*', (req, res) => {
   res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
   res.end()
 })
-app.use(express.static(path.join(__dirname, 'public')))
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
