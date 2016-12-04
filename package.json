@@ -46,7 +46,6 @@
     "chai-http": "^2.0.1",
     "commitizen": "^2.8.6",
     "css-loader": "^0.26.0",
-    "chai-http": "^2.0.1",
     "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^2.6.0",
     "dotenv": "^2.0.0",
@@ -63,9 +62,7 @@
     "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^1.16.2",
     "webpack-error-notification": "^0.1.6",
-    "webpack-hot-middleware": "^2.13.2",
-    "commitizen": "^2.8.6",
-    "foreman": "^2.0.0"
+    "webpack-hot-middleware": "^2.13.2"
   },
   "config": {
     "commitizen": {
@@ -87,8 +84,8 @@
     "passport-github2": "^0.1.10",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
-    "passport": "^0.3.2",
-    "passport-github2": "^0.1.10",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
     "serve-favicon": "^2.3.2"
   }
 }

@@ -23,7 +23,7 @@ describe('Auth Routes', done => {
   describe('POST /auth/login route', () => {
     it('redirects to github for login/approve page', done => {
       chai.request(server)
-        .get('/auth/login')
+        .get('/api/v1/auth/login')
         .redirects(0)
         .end((error, response) => {
           response.body.should.be.a('object')
@@ -38,7 +38,7 @@ describe('Auth Routes', done => {
   describe('github callback', () => {
     it('should poll github api for details', done => {
       const agent = chai.request.agent(server)
-      agent.get('/auth/oauth_callback')
+      agent.get('/api/v1/auth/oauth_callback')
         .query({code:'9835b716e83875665b21'})
         .end((error, response) => {
           expect(response.text).to.match(/(Bobby Walker)/)
@@ -49,7 +49,7 @@ describe('Auth Routes', done => {
   describe('logout', () => {
     it('it should end the session and show login', done => {
       chai.request(server)
-        .get('/auth/logout')
+        .get('/api/v1/auth/logout')
         .end((error, response) => {
           response.should.have.status(200)
           response.body.should.be.a('object')

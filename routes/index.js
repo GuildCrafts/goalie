@@ -1,7 +1,8 @@
-const express = require( 'express' )
+const express = require('express')
 const router = express.Router()
-const passport = require( '../config/authenticate' )
+const {listGoals} = require('./github_methods/github_requests')
 
-router.get('/', (req, res, next) => res.render('index', {}))
+router.get('/', (request, response) => response.render('index'))
+router.get('/list-goals', listGoals)
 
 module.exports = router

@@ -5,7 +5,7 @@ const {authCallback, logOutCallback} = require('./authenticate/authMethods')
 
 router.get(
   '/login',
-  passport.authenticate('github', {scope:['user:email']})
+  passport.authenticate('github', {scope:['repo', 'user:email']})
 )
 
 router.get(

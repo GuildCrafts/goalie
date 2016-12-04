@@ -12,8 +12,8 @@ const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./webpack.config.js')
 const { passport } = require('./config/authenticate')
-const routes = require('./routes')
-const auth = require('./routes/auth.js')
+const routes = require('./routes/index')
+const auth = require('./routes/auth')
 
 const app = express()
 
@@ -36,8 +36,8 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/', routes)
-app.use('/auth', auth)
+app.use('/api/v1', routes)
+app.use('/api/v1/auth', auth)
 
 const compiler = webpack(config)
 const middleware = webpackMiddleware(compiler, {
